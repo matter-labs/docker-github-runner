@@ -32,7 +32,7 @@ jobs:
       -
         id: env
         run: |
-          latest=${{ steps.latest.outputs.tag }}; latest=${latest#v}
+          latest=${{ steps.latest.outputs.tag }}; latest=${latest#v}; latest="${latest%-r*}"
           echo "::set-output name=runnerVersion::${latest}"
       # When building we always use the latest runner version available
       -
