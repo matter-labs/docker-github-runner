@@ -9,6 +9,8 @@ ENV SOLC_VER=0.5.17 \
 RUN # install solc binary \
     ( cd /usr/local/bin && curl -fsSLo solc https://github.com/ethereum/solidity/releases/download/v${SOLC_VER}/solc-static-linux && \
       printf "${SOLC_SUM}  solc" | sha256sum -c && chmod 755 solc ) && \
+    # install node dependencies \
+    npm install -g yarn && \
     # clean up \
     apt-get -y clean && \
     rm -rf /var/cache/apt /var/lib/apt/lists/* /tmp/* /var/tmp/*
